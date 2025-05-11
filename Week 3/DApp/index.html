@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Voting DApp</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #connectBtn {
+            background-color: #1a73e8;
+            color: white;
+        }
+
+        #connectBtn:hover {
+            background-color: #1669c1;
+        }
+
+        #voteBtn {
+            background-color: #28a745;
+            color: white;
+        }
+
+        #voteBtn:hover {
+            background-color: #218838;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .label,
+        .status {
+            margin-top: 12px;
+            font-size: 14px;
+            color: #444;
+        }
+
+        .account {
+            font-family: monospace;
+            font-size: 13px;
+            color: #666;
+            word-break: break-all;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h2>🗳️ Simple Voting DApp</h2>
+
+        <button id="connectBtn">Connect Wallet</button>
+        <div class="label">Connected Account:</div>
+        <div id="account" class="account">Not connected</div>
+
+        <input type="text" id="candidateId" placeholder="Enter Candidate ID" />
+        <button id="voteBtn">Vote</button>
+
+        <div class="status" id="status"></div>
+    </div>
+
+    <!-- Ethers.js - must go first -->
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+
+<!-- Your app logic -->
+<script src="app.js"></script>
+
+
+</body>
+
+</html>

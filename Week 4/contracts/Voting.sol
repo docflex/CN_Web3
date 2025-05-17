@@ -19,6 +19,10 @@ contract Voting {
     event CandidateAdded(uint id, string name);
     event Voted(address voter, uint candidateId);
 
+    constructor() {
+        owner = msg.sender;
+    }
+
     modifier onlyOwner() {
         require(msg.sender == owner, "Only Owner can Call this Function");
         _;

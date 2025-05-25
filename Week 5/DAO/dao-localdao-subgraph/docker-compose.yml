@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  graph-node:
+    image: graphprotocol/graph-node
+    ports:
+      - "8000:8000"    # GraphQL
+      - "8001:8001"    # Admin
+      - "8020:8020"    # Deploy
+    depends_on:
+      - ipfs
+      - postgres
+    environment:
+      postgres_host: postgres
+      postgres_user: graph
+      postgres_pass: letmein
+      postgres_db: graph
+      ipfs: http://ipfs:5001
+      ethereum: 'localhost:http://host.docker.internal:8545'
+      GRAPH_LOG: info
+    networks:
+      - graphnet
+
+  ipfs:
+    image: ipfs/go-ipfs:v0.10.0
+    ports:
+      - "5001:5001"
+    networks:
+      - graphnet
+
+  postgres:
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: graph
+      POSTGRES_PASSWORD: letmein
+      POSTGRES_DB: graph
+    networks:
+      - graphnet
+
+networks:
+  graphnet:

@@ -1,4 +1,6 @@
-specVersion: 0.0.4
+specVersion: 1.3.0
+indexerHints:
+  prune: auto
 schema:
   file: ./schema.graphql
 dataSources:
@@ -11,14 +13,14 @@ dataSources:
       startBlock: 0
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.7
+      apiVersion: 0.0.9
       language: wasm/assemblyscript
       entities:
-        - Voter
+        - VoteCast
       abis:
         - name: DAO
           file: ./abis/DAO.json
       eventHandlers:
         - event: VoteCast(indexed address,uint256,uint256)
           handler: handleVoteCast
-      file: ./src/mapping.ts
+      file: ./src/dao.ts
